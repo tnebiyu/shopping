@@ -1,7 +1,8 @@
 import 'package:shopping/data_model.dart';
 class DataManager{
   List<Catagory>? _menu;
-  List<ItemCart>cart = [];
+  List<ItemCart> cart = [];
+  List<Catagory>? catagories;
 
   getMenu(){
     return _menu;

@@ -14,6 +14,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     var dataManager = DataManager();
+
     late Widget currentPage;
     switch (_currentIndex){
       case 0:

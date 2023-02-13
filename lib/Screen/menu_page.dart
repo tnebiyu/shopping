@@ -7,18 +7,18 @@ class Menu extends StatelessWidget {
   DataManager? dataManager;
 
 
+
   Menu({required this.dataManager});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: FutureBuilder<List<Catagory>>(
-          future: dataManager!.getMenu(),
+         future: dataManager!.getMenu(),
           builder:(context, snapshot){
             if(snapshot.hasData){
-              var categories = snapshot.data! as List<Catagory>;
 return ListView.builder(
-    itemCount: categories.length,
+    itemCount: catagories.length,
     itemBuilder: (context, index){
       return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,16 +27,16 @@ return ListView.builder(
     padding: const EdgeInsets.only(
     top: 32.0, bottom: 8.0, left: 8.0),
     child: Text(
-    categories[index].name,
+    catagories[index].name,
     style: TextStyle(color: Colors.brown.shade400),
     ),
     ),
     ListView.builder(
     shrinkWrap: true,
     physics: const ClampingScrollPhysics(),
-    itemCount: categories[index].products.length!,
+    itemCount: catagories[index].products.length,
     itemBuilder: (context, proIndex) {
-    var product =categories[index].products[proIndex];
+    var product =catagories[index].products[proIndex];
     return MenuItem(
     product: product,
     onAdd: (addedProduct) => dataManager!.cartAdd(addedProduct),
@@ -52,6 +52,7 @@ return ListView.builder(
             else if (snapshot.hasError) {
               return Text('${snapshot.error}');
             }
+            else
             return CircularProgressIndicator();
           }),
     );

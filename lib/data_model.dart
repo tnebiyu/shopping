@@ -10,13 +10,13 @@ class Product{
   var color;
 
   Product({required this.id,required this.name,required this.color, required this.price} );
-  factory Product.fromJson(Map<String, dynamic> json) {
-    return Product(
-        id: json['id'] as int,
-        name: json['name'] as String,
-        price: json['price'] as double,
-         color: json['color'] as String);
-  }
+  // factory Product.fromJson(Map<String, dynamic> json) {
+  //   return Product(
+  //       id: json['id'] as int,
+  //       name: json['name'] as String,
+  //       price: json['price'] as double,
+  //        color: json['color'] as String);
+  // }
 }
 List<Product> products = List.generate(demoData.length, (index) => Product(id: demoData[index]['id'], name: demoData[index]['name'], color: demoData[index]['color'], price:demoData[index]['price']));
 List demoData =[
@@ -50,6 +50,7 @@ List demoData =[
   },
 ];
 
+
 class Catagory{
   String name;
   List<Product> products;
@@ -57,6 +58,25 @@ class Catagory{
   Catagory({required this.name,required this.products});
 
 }
+List<Catagory> catagories = List.generate(catagory.length, (index) => Catagory(name: catagory[index]['name'], products: catagory[index][Product]));
+List catagory = [
+  {
+    "name" : "cat",
+    Product : products.indexWhere((element) => element.id == 1)
+  },
+  {
+    "name" : "dog",
+    Product : products.indexWhere((element) => element.id == 2)
+  },
+  {
+    "name" : "cow",
+    Product : products.indexWhere((element) => element.id == 3)
+  },
+  {
+    "name" : "rat",
+    Product : products.indexWhere((element) => element.id == 4)
+  },
+];
 
 class ItemCart{
   Product product;
